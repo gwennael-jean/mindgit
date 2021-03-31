@@ -1,6 +1,6 @@
 <div class="full-page d-flex flex-column">
-  <a routerLink="/home" class="btn btn-secondary">
-    {{ 'PAGES.REPOSITORIES.LEAVE' | translate }}
+  <a routerLink="/home" class="btn-fixed-top">
+    <i class="fas fa-times fa-2x"></i>
   </a>
   <div class="d-flex justify-content-around align-items-center flex-fill">
     <div>
@@ -11,7 +11,12 @@
       </ul>
     </div>
     <div>
-      {{ 'PAGES.REPOSITORIES.MENU.ITEMS.REPOSITORY_LIST' | translate }}
+      <h1>{{ 'PAGES.REPOSITORIES.MENU.ITEMS.REPOSITORY_LIST' | translate }}</h1>
+      <ul class="list-unstyled">
+        <li *ngFor="let repository of repositories">
+          {{repository}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>

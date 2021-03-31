@@ -1,0 +1,10 @@
+.btn-fixed-top {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  color: $white;
+
+  &:hover {
+    color: $white !important;
+  }
+}

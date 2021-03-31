@@ -1,5 +1,5 @@
 import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
+import {APP_INITIALIZER, NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule, HttpClient} from "@angular/common/http";
 import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
@@ -12,9 +12,20 @@ import {AppRoutingModule} from "./app-routing.module";
 
 import {HomeModule} from "./pages/home/home.module";
 import {ParametersModule} from "./pages/parameters/parameters.module";
+import {ElectronService} from "./shared/electron/services/electron/electron.service";
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+}
+
+export function loadingProvide(electronService: ElectronService) {
+  return (): Promise<boolean> => new Promise<boolean>(resolve => {
+    electronService.ipcRenderer.invoke('load:data')
+      .then((data) => {
+        electronService.data = data;
+        resolve(true);
+      });
+  });
 }
 
 @NgModule({
@@ -35,7 +46,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HomeModule,
     ParametersModule,
   ],
-  providers: [],
+  providers: [
+    {provide: APP_INITIALIZER, useFactory: loadingProvide, deps: [ElectronService], multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
