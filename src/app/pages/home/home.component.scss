@@ -1,0 +1,29 @@
+@import "../../../assets/scss/config";
+
+@import "~bootstrap/scss/utilities/background";
+@import "~bootstrap/scss/utilities/spacing";
+
+.area {
+  position: relative;
+
+  &.area-left {
+    width: 325px;
+    border-right: 1px solid darken($primary, 5%);
+  }
+
+  &.area-right {
+    width: 325px;
+    border-left: 1px solid darken($primary, 5%);
+  }
+
+  .scrollable {
+    @extend .p-2;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+}
+

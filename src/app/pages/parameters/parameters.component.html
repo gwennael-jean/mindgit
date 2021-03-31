@@ -1,0 +1,17 @@
+<div class="full-page d-flex flex-column">
+  <a routerLink="/home" class="btn btn-secondary">
+    {{ 'PAGES.REPOSITORIES.LEAVE' | translate }}
+  </a>
+  <div class="d-flex justify-content-around align-items-center flex-fill">
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item" (click)="openNewProject()" role="button">
+          {{ 'PAGES.REPOSITORIES.MENU.ITEMS.OPEN_PROJECT' | translate }}
+        </li>
+      </ul>
+    </div>
+    <div>
+      {{ 'PAGES.REPOSITORIES.MENU.ITEMS.REPOSITORY_LIST' | translate }}
+    </div>
+  </div>
+</div>

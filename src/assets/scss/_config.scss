@@ -1,0 +1,20 @@
+$body-color: #FFFFFF;
+
+$primary: #2c3e50;
+$secondary: #34495e;
+
+$theme-colors: (
+);
+
+$list-group-bg: $primary;
+
+// Import settings
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+// Import tools
+@import "~bootstrap/scss/mixins";
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";

@@ -1,0 +1,17 @@
+{
+  "PAGES": {
+      "HOME": {
+          "TITLE": "Accueil",
+          "GO_TO_DETAIL": "Redirection vers Detail"
+      },
+      "REPOSITORIES": {
+        "MENU": {
+          "ITEMS":{
+            "OPEN_PROJECT": "Ouvrir un projet",
+            "REPOSITORY_LIST": "Liste des dépôts"
+          }
+        },
+        "LEAVE": "Quitter"
+    }
+  }
+}
