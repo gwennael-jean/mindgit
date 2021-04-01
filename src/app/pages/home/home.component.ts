@@ -8,7 +8,7 @@ import {ElectronService} from '../../shared/electron/services/electron/electron.
 })
 export class HomeComponent implements OnInit {
 
-  private repository: string;
+  public repository: string;
 
   constructor(private electronService: ElectronService) {
   }

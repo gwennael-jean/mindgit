@@ -106,7 +106,6 @@ ipcMain.handle('load:data', (event) => {
   return store.get('app');
 });
 
-
 ipcMain.on('save:app:repository', (event, repository) => {
   store.set('app', {
     ...store.get('app'), ...{
@@ -119,6 +118,17 @@ ipcMain.on('save:app:repository', (event, repository) => {
       ...store.get('app'), ...{repositories: [...store.get('app').repositories, repository]}
     });
   }
+
+  event.reply('app:saved', store.get('app'));
+});
+
+
+ipcMain.on('delete:app:repository', (event, repository) => {
+  const repositories = store.get('app').repositories;
+
+  store.set('app', {
+    ...store.get('app'), ...{repositories: store.set('app', repositories.filter(r => r !== repository))}
+  });
 
   event.reply('app:saved', store.get('app'));
 });
