@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {ElectronService} from '../../shared/electron/services/electron/electron.service';
 
 @Component({
   selector: 'app-parameters',
@@ -7,13 +8,24 @@ import {Component, OnInit} from "@angular/core";
 })
 export class ParametersComponent implements OnInit {
 
-  constructor() {
+  public repositories: Array<string>;
+
+  constructor(private electronService: ElectronService) {
   }
 
   ngOnInit(): void {
+    this.repositories = this.electronService.data.repositories;
+    console.log(this.repositories);
   }
 
   openNewProject(): void {
-    console.log("Open Project !");
+    this.electronService.remote.dialog.showOpenDialog({
+      properties: ['openDirectory']
+    }).then(result => {
+      if (result.filePaths.length) {
+        const directory = result.filePaths[0];
+        this.electronService.ipcRenderer.send('save:app:repository', directory);
+      }
+    });
   }
 }

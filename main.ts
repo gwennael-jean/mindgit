@@ -1,13 +1,28 @@
-import { app, BrowserWindow, screen } from 'electron';
+import {app, BrowserWindow, screen, ipcMain} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+
+import LocalStorage from './lib/LocalStorage';
 
 // Initialize remote module
 require('@electron/remote/main').initialize();
 
 let win: BrowserWindow = null;
-const args = process.argv.slice(1),
-  serve = args.some(val => val === '--serve');
+const args = process.argv.slice(1);
+const serve = args.some(val => val === '--serve');
+
+const store = new LocalStorage('data', {
+  defaults: {
+    windowBounds: {
+      width: null,
+      height: null
+    },
+    app: {
+      repository: null,
+      repositories: []
+    }
+  }
+});
 
 function createWindow(): BrowserWindow {
 
@@ -17,13 +32,13 @@ function createWindow(): BrowserWindow {
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: size.width,
-    height: size.height,
+    width: store.get('windowBounds').width ?? size.width,
+    height: store.get('windowBounds').height ?? size.height,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
       contextIsolation: false,  // false if you want to run 2e2 test with Spectron
-      enableRemoteModule : true // true if you want to run 2e2 test  with Spectron or use remote module in renderer context (ie. Angular)
+      enableRemoteModule: true // true if you want to run 2e2 test  with Spectron or use remote module in renderer context (ie. Angular)
     },
   });
 
@@ -44,11 +59,14 @@ function createWindow(): BrowserWindow {
     }));
   }
 
-  // Emitted when the window is closed.
+  win.on('resize', (event) => {
+    store.set('windowBounds', {
+      width: win.getSize()[0],
+      height: win.getSize()[1],
+    });
+  });
+
   win.on('closed', () => {
-    // Dereference the window object, usually you would store window
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     win = null;
   });
 
@@ -83,3 +101,24 @@ try {
   // Catch Error
   // throw e;
 }
+
+ipcMain.handle('load:data', (event) => {
+  return store.get('app');
+});
+
+
+ipcMain.on('save:app:repository', (event, repository) => {
+  store.set('app', {
+    ...store.get('app'), ...{
+      repository: repository
+    }
+  });
+
+  if (!store.get('app').repositories.includes(repository)) {
+    store.set('app', {
+      ...store.get('app'), ...{repositories: [...store.get('app').repositories, repository]}
+    });
+  }
+
+  event.reply('app:saved', store.get('app'));
+});
