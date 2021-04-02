@@ -113,22 +113,22 @@ ipcMain.on('save:app:repository', (event, repository) => {
     }
   });
 
-  if (!store.get('app').repositories.includes(repository)) {
+  if (!store.get('app').repositories.filter(r => r.path === repository.path).length) {
     store.set('app', {
       ...store.get('app'), ...{repositories: [...store.get('app').repositories, repository]}
     });
   }
 
-  event.reply('app:saved', store.get('app'));
+  event.reply('app:saved:repository', store.get('app').repository);
+  event.reply('app:saved:repositories', store.get('app').repositories);
 });
-
 
 ipcMain.on('delete:app:repository', (event, repository) => {
   const repositories = store.get('app').repositories;
 
   store.set('app', {
-    ...store.get('app'), ...{repositories: store.set('app', repositories.filter(r => r !== repository))}
+    ...store.get('app'), ...{repositories: repositories.filter(r => r.path !== repository.path)}
   });
 
-  event.reply('app:saved', store.get('app'));
+  event.reply('app:saved:repositories', store.get('app').repositories);
 });

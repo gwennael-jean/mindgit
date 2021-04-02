@@ -1,5 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ElectronService} from '../../shared/electron/services/electron/electron.service';
+import {Repository} from '../../shared/git/models/Repository';
+import {Deserialize} from 'cerialize';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,12 @@ import {ElectronService} from '../../shared/electron/services/electron/electron.
 })
 export class HomeComponent implements OnInit {
 
-  public repository: string;
+  public repository: Repository;
 
   constructor(private electronService: ElectronService) {
+    this.electronService.ipcRenderer.on('app:saved:repository', (event, repository: any) => {
+      this.repository = Deserialize(repository, Repository);
+    });
   }
 
   ngOnInit(): void {

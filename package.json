@@ -41,7 +41,8 @@
   },
   "dependencies": {
     "@electron/remote": "1.0.4",
-    "cerialize": "2.0.1"
+    "cerialize": "2.0.1",
+    "path": "0.12.7"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "11.1.1",

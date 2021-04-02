@@ -16,7 +16,7 @@
         <li class="mb-1" *ngFor="let repository of repositories">
           <div class="d-flex flex-row align-items-center">
             <div class="flex-fill">
-              {{repository}}
+              {{repository.name}}
             </div>
             <button class="btn btn-sm btn-success ml-1" (click)="saveMainRepository(repository)">
               <i class="fas fa-play"></i>
