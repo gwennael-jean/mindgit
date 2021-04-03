@@ -6,14 +6,33 @@
 .area {
   position: relative;
 
+  &.area-center {
+    flex: 1;
+    height: auto;
+    background-color: $dashboard-bg-color;
+    padding: 0.5rem;
+    background-image: url('./../../../assets/img/mindgit.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
   &.area-left {
-    width: 325px;
-    border-right: 1px solid darken($primary, 5%);
+    display: flex;
+    flex-direction: column;
+    min-width: $dashboard-sidebar-left-min-width;
+    max-width: $dashboard-sidebar-left-max-width;
+    border-right: 1px solid $dashboard-sidebar-border-color;
+    background-color: $dashboard-sidebar-bg-color;
   }
 
   &.area-right {
-    width: 325px;
-    border-left: 1px solid darken($primary, 5%);
+    display: flex;
+    flex-direction: column;
+    min-width: $dashboard-sidebar-right-min-width;
+    max-width: $dashboard-sidebar-right-max-width;
+    border-left: 1px solid $dashboard-sidebar-border-color;
+    background-color: $dashboard-sidebar-bg-color;
   }
 
   .scrollable {

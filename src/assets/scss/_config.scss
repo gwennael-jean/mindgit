@@ -1,11 +1,68 @@
-$body-color: #FFFFFF;
 
-$primary: #2c3e50;
-$secondary: #34495e;
+//$primary: #2c3e50;
+//$secondary: #34495e;
+
+$primary: #343A40;
+$secondary: #9b59b6;
+
+$body-color: #FFFFFF;
 
 $theme-colors: (
 );
 
+$topbar-border-color: darken($primary, 5%);
+
+// Dashboard
+$dashboard-bg-color: $primary;
+$dashboard-sidebar-bg-color: lighten($primary, 5%);
+$dashboard-sidebar-border-color: darken($primary, 5%);
+
+$footer-bg-color: $primary;
+$footer-border-color: darken($footer-bg-color, 5%);
+
+// Form
+$input-btn-focus-width: .2rem;
+$input-focus-border-color: darken($primary, 5%);
+$input-focus-box-shadow: 0 0 0 $input-btn-focus-width rgba($secondary, .25);
+
+$input-bg: $primary;
+$input-border-color: darken($input-bg, 5%);
+
+$input-focus-bg: $input-bg;
+
+// Card
+$card-bg: $primary;
+$card-spacer-y: 0.5rem;
+$card-spacer-x: 0.5rem;
+
+// Modal
+$modal-content-bg: $primary;
+$modal-content-border-color: darken($modal-content-bg, 5%);
+$modal-header-border-color: $modal-content-border-color;
+$modal-footer-border-color: $modal-content-border-color;
+$modal-input-bg: lighten($primary, 5%);
+
+// Dropdown
+$dropdown-bg: $primary;
+$dropdown-border-color: darken($dropdown-bg, 5%);
+$dropdown-link-hover-bg: lighten($dropdown-bg, 5%);
+$dropdown-link-active-color: lighten($dropdown-bg, 5%);
+
+// Dashboard
+$dashboard-sidebar-left-min-width: 300px;
+$dashboard-sidebar-left-max-width: 400px;
+$dashboard-sidebar-right-min-width: 375px;
+$dashboard-sidebar-right-max-width: 450px;
+
+// Branch List
+$branch-list-current-bg: rgba($secondary, 0.3);
+
+// Staging Block
+$staging-block-body-bg-color: $primary;
+$staging-block-body-border-color: darken($staging-block-body-bg-color, 5%);
+$staging-block-file-bg-color-hover: lighten($primary, 5%);
+
+// List group
 $list-group-bg: $primary;
 
 // Import settings

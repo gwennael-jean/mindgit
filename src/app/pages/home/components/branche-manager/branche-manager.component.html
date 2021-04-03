@@ -1,0 +1,32 @@
+<div class="accordion">
+  <div class="card">
+    <div class="card-header" data-toggle="collapse" data-target="#local-branches" aria-controls="branch-local">
+      <div class="media align-items-center">
+        <i class="fas fa-desktop"></i>
+        <div class="media-body ml-1">
+          {{ 'PAGES.HOME.GIT.BRANCH.LOCAL' | translate | uppercase }}
+        </div>
+      </div>
+    </div>
+    <div id="local-branches" class="collapse show">
+      <div class="card-body">
+
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" data-toggle="collapse" data-target="#remote-branches" aria-controls="branch-remote">
+      <div class="media align-items-center">
+        <i class="fas fa-cloud"></i>
+        <div class="media-body ml-1">
+          {{ 'PAGES.HOME.GIT.BRANCH.REMOTE' | translate | uppercase }}
+        </div>
+      </div>
+    </div>
+    <div id="remote-branches" class="collapse show">
+      <div class="card-body">
+
+      </div>
+    </div>
+  </div>
+</div>
