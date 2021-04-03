@@ -1,6 +1,9 @@
-import {Component, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
+import * as path from "path";
 import {ElectronService} from '../../shared/electron/services/electron/electron.service';
 import {Router} from "@angular/router";
+import {Repository} from '../../shared/git/models/Repository';
+import {DataStorageService} from "../../shared/electron/services/data-storage/data-storage.service";
 
 @Component({
   selector: 'app-parameters',
@@ -9,13 +12,22 @@ import {Router} from "@angular/router";
 })
 export class ParametersComponent implements OnInit {
 
-  public repositories: Array<string>;
+  public repositories: Array<Repository>;
 
-  constructor(private router: Router, private electronService: ElectronService) {
+  constructor(
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef,
+    private dataStorageService: DataStorageService,
+    private electronService: ElectronService
+  ) {
+
   }
 
   ngOnInit(): void {
-    this.repositories = this.electronService.data.repositories;
+    this.dataStorageService.repositories.subscribe(val => {
+      this.repositories = val;
+      this.changeDetectorRef.detectChanges();
+    });
   }
 
   openNewProject(): void {
@@ -23,19 +35,23 @@ export class ParametersComponent implements OnInit {
       properties: ['openDirectory']
     }).then(result => {
       if (result.filePaths.length) {
-        const repository = result.filePaths[0];
+
+        const repository = new Repository();
+        repository.path = result.filePaths[0];
+        repository.name = path.basename(repository.path);
+
         this.electronService.ipcRenderer.send('save:app:repository', repository);
         this.router.navigate(['home']);
       }
     });
   }
 
-  saveMainRepository(repository: string): void {
+  saveMainRepository(repository: Repository): void {
     this.electronService.ipcRenderer.send('save:app:repository', repository);
     this.router.navigate(['home']);
   }
 
-  deleteRepository(repository: string): void {
+  deleteRepository(repository: Repository): void {
     this.electronService.ipcRenderer.send('delete:app:repository', repository);
   }
 }

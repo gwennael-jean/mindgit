@@ -1,5 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import {ElectronService} from '../../shared/electron/services/electron/electron.service';
+import {Repository} from '../../shared/git/models/Repository';
+import {DataStorageService} from "../../shared/electron/services/data-storage/data-storage.service";
 
 @Component({
   selector: 'app-home',
@@ -8,13 +10,17 @@ import {ElectronService} from '../../shared/electron/services/electron/electron.
 })
 export class HomeComponent implements OnInit {
 
-  public repository: string;
+  public repository: Repository;
 
-  constructor(private electronService: ElectronService) {
+  constructor(private changeDetectorRef: ChangeDetectorRef, private dataStorageService: DataStorageService, private electronService: ElectronService) {
+
   }
 
   ngOnInit(): void {
-    this.repository = this.electronService.data.repository;
+    this.dataStorageService.repository.subscribe(val => {
+      this.repository = val;
+      this.changeDetectorRef.detectChanges();
+    });
   }
 
 }

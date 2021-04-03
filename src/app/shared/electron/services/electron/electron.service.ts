@@ -1,5 +1,4 @@
 import {Injectable} from "@angular/core";
-
 import {ipcRenderer, webFrame} from "electron";
 import * as remote from "@electron/remote";
 import * as childProcess from "child_process";
@@ -20,8 +19,6 @@ export class ElectronService {
 
   fs: typeof fs;
 
-  data: any;
-
   get isElectron(): boolean {
     return !!(window && window.process && window.process.type);
   }
@@ -33,7 +30,6 @@ export class ElectronService {
       this.remote = window.require("@electron/remote");
       this.childProcess = window.require("child_process");
       this.fs = window.require("fs");
-      this.data = {};
 
       console.log("remote - globalShortcut", this.remote.globalShortcut);
     }
