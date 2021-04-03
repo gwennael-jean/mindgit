@@ -1,10 +1,9 @@
-import {Component, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import * as path from "path";
 import {ElectronService} from '../../shared/electron/services/electron/electron.service';
 import {Router} from "@angular/router";
 import {Repository} from '../../shared/git/models/Repository';
-import {Deserialize} from 'cerialize';
-import {map} from 'rxjs/operators';
+import {DataStorageService} from "../../shared/electron/services/data-storage/data-storage.service";
 
 @Component({
   selector: 'app-parameters',
@@ -15,14 +14,20 @@ export class ParametersComponent implements OnInit {
 
   public repositories: Array<Repository>;
 
-  constructor(private router: Router, private electronService: ElectronService) {
-    this.electronService.ipcRenderer.on('app:saved:repositories', (event, repositories: any) => {
-      this.repositories = repositories.map(repository => Deserialize(repository, Repository));
-    });
+  constructor(
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef,
+    private dataStorageService: DataStorageService,
+    private electronService: ElectronService
+  ) {
+
   }
 
   ngOnInit(): void {
-    this.repositories = this.electronService.data.repositories;
+    this.dataStorageService.repositories.subscribe(val => {
+      this.repositories = val;
+      this.changeDetectorRef.detectChanges();
+    });
   }
 
   openNewProject(): void {

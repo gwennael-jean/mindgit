@@ -14,16 +14,17 @@ import {HomeModule} from "./pages/home/home.module";
 import {ParametersModule} from "./pages/parameters/parameters.module";
 import {ElectronService} from "./shared/electron/services/electron/electron.service";
 import {GitModule} from "./shared/git/git.module";
+import {DataStorageService} from "./shared/electron/services/data-storage/data-storage.service";
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
 
-export function loadingProvide(electronService: ElectronService) {
+export function loadingProvide(electronService: ElectronService, dataStorageService: DataStorageService) {
   return (): Promise<boolean> => new Promise<boolean>(resolve => {
     electronService.ipcRenderer.invoke('load:data')
       .then((data) => {
-        electronService.data = data;
+        dataStorageService.init(data);
         resolve(true);
       });
   });
@@ -49,7 +50,7 @@ export function loadingProvide(electronService: ElectronService) {
     ParametersModule,
   ],
   providers: [
-    {provide: APP_INITIALIZER, useFactory: loadingProvide, deps: [ElectronService], multi: true}
+    {provide: APP_INITIALIZER, useFactory: loadingProvide, deps: [ElectronService, DataStorageService], multi: true}
   ],
   bootstrap: [AppComponent]
 })
