@@ -21,4 +21,14 @@ export class GitService {
       });
     });
   }
+
+  public getRemoteBranches(repository: Repository): Promise<BranchResult>
+  {
+    return new Promise((resolve, reject) => {
+      this.electronService.childProcess.exec(`cd ${repository.path} && git branch -r`, (err, stdout) => {
+        if (err) reject(err);
+        resolve(this.branchHandlerService.handle(stdout));
+      });
+    });
+  }
 }
