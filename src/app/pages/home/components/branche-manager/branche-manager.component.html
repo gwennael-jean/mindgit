@@ -1,6 +1,6 @@
 <div class="accordion">
   <div class="card">
-    <div class="card-header" data-toggle="collapse" data-target="#local-branches" aria-controls="branch-local">
+    <div class="card-header" data-toggle="collapse" data-target="#local-branches" aria-controls="branch-local" role="button">
       <div class="media align-items-center">
         <i class="fas fa-desktop"></i>
         <div class="media-body ml-1">
@@ -9,13 +9,13 @@
       </div>
     </div>
     <div id="local-branches" class="collapse show">
-      <div class="card-body">
-
+      <div class="card-body" *ngIf="localBranches !== null">
+        <app-branch-list [folder]="localBranches"></app-branch-list>
       </div>
     </div>
   </div>
   <div class="card">
-    <div class="card-header" data-toggle="collapse" data-target="#remote-branches" aria-controls="branch-remote">
+    <div class="card-header" data-toggle="collapse" data-target="#remote-branches" aria-controls="branch-remote"role="button">
       <div class="media align-items-center">
         <i class="fas fa-cloud"></i>
         <div class="media-body ml-1">
@@ -24,8 +24,10 @@
       </div>
     </div>
     <div id="remote-branches" class="collapse show">
-      <div class="card-body">
-
+      <div class="card-body" *ngIf="remoteBranches !== null">
+        <ul class="list-unstyled">
+          <app-branch-list [folder]="remoteBranches"></app-branch-list>
+        </ul>
       </div>
     </div>
   </div>

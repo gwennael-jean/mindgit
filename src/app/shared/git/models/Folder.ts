@@ -15,6 +15,10 @@ export class Folder extends Node {
     return filteredNodes.length === 1 ? filteredNodes[0] : null;
   }
 
+  public isEmpty(): boolean {
+    return !this.children.length;
+  }
+
   public has(path: string): boolean {
     return !!this.children.filter(n => n.name === path).length;
   }

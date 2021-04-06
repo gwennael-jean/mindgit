@@ -1,0 +1,17 @@
+<ul class="list-unstyled">
+  <li *ngFor="let node of folder.children">
+    <div class="media">
+      <div>
+        <i [ngClass]="node.iconClass"></i>
+      </div>
+      <div class="media-body ml-1">
+        <div data-toggle="collapse" [attr.data-target]="'#locale-' + node.name" role="button">
+          {{node.name}}
+        </div>
+        <div id="locale-{{node.name}}" class="collapse">
+          <app-branch-list *ngIf="node.children !== undefined" [folder]="node"></app-branch-list>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
