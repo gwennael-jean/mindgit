@@ -8,8 +8,8 @@
         <div data-toggle="collapse" class="text-nowrap text-truncate" [attr.data-target]="'#' + prefix + '-' + node.name + '-' + index" role="button">
           {{node.name}}
         </div>
-        <div id="{{prefix}}-{{node.name}}-{{index}}" class="collapse show">
-          <app-branch-list *ngIf="node.children !== undefined" [folder]="node" prefix="{{prefix}}"></app-branch-list>
+        <div id="{{prefix}}-{{node.name}}-{{index}}" class="collapse" [class.show]="open">
+          <app-branch-list *ngIf="node.children !== undefined" [folder]="node" prefix="{{prefix}}" [open]="openSubFolder"></app-branch-list>
         </div>
       </div>
     </div>
