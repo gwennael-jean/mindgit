@@ -6,9 +6,9 @@ export class Branch extends Node {
 
   isCurrent: boolean;
 
-  constructor(name: string) {
+  constructor(name: string, isCurrent = false) {
     super(name);
     this.iconClass = 'fas fa-code-branch';
-    this.isCurrent = false;
+    this.isCurrent = isCurrent;
   }
 }

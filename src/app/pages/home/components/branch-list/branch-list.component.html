@@ -1,15 +1,15 @@
-<ul class="list-unstyled">
-  <li *ngFor="let node of folder.children">
-    <div class="media">
+<ul class="list-unstyled overflow-hidden">
+  <li *ngFor="let node of folder.children;let index = index" [class.active]="node.isCurrent !== undefined && node.isCurrent">
+    <div class="d-flex flex-row">
       <div>
         <i [ngClass]="node.iconClass"></i>
       </div>
-      <div class="media-body ml-1">
-        <div data-toggle="collapse" [attr.data-target]="'#locale-' + node.name" role="button">
+      <div class="flex-fill ml-1 overflow-hidden">
+        <div data-toggle="collapse" class="text-nowrap text-truncate" [attr.data-target]="'#' + prefix + '-' + node.name + '-' + index" role="button">
           {{node.name}}
         </div>
-        <div id="locale-{{node.name}}" class="collapse">
-          <app-branch-list *ngIf="node.children !== undefined" [folder]="node"></app-branch-list>
+        <div id="{{prefix}}-{{node.name}}-{{index}}" class="collapse show">
+          <app-branch-list *ngIf="node.children !== undefined" [folder]="node" prefix="{{prefix}}"></app-branch-list>
         </div>
       </div>
     </div>

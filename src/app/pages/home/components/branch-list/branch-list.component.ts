@@ -11,6 +11,12 @@ export class BranchListComponent implements OnInit {
   @Input()
   folder: Folder;
 
+  @Input()
+  prefix: string;
+
+  @Input()
+  icon = 'fas fa-folder';
+
   constructor() {
   }
 

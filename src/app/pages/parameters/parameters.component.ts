@@ -26,7 +26,6 @@ export class ParametersComponent implements OnInit {
   ngOnInit(): void {
     this.dataStorageService.repositories.subscribe(val => {
       this.repositories = val;
-      this.changeDetectorRef.detectChanges();
     });
   }
 

@@ -10,7 +10,7 @@
     </div>
     <div id="local-branches" class="collapse show">
       <div class="card-body" *ngIf="localBranches !== null">
-        <app-branch-list [folder]="localBranches"></app-branch-list>
+        <app-branch-list [folder]="localBranches" prefix="locale"></app-branch-list>
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@
     <div id="remote-branches" class="collapse show">
       <div class="card-body" *ngIf="remoteBranches !== null">
         <ul class="list-unstyled">
-          <app-branch-list [folder]="remoteBranches"></app-branch-list>
+          <app-branch-list [folder]="remoteBranches" prefix="remote" icon="fas fa-crosshairs"></app-branch-list>
         </ul>
       </div>
     </div>
