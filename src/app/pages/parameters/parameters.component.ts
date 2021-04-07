@@ -16,7 +16,6 @@ export class ParametersComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private changeDetectorRef: ChangeDetectorRef,
     private dataStorageService: DataStorageService,
     private electronService: ElectronService
   ) {
@@ -26,7 +25,6 @@ export class ParametersComponent implements OnInit {
   ngOnInit(): void {
     this.dataStorageService.repositories.subscribe(val => {
       this.repositories = val;
-      this.changeDetectorRef.detectChanges();
     });
   }
 

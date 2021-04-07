@@ -42,6 +42,7 @@
   "dependencies": {
     "@electron/remote": "1.0.4",
     "cerialize": "2.0.1",
+    "jquery": "3.6.0",
     "path": "0.12.7"
   },
   "devDependencies": {

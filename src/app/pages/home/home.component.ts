@@ -12,14 +12,17 @@ export class HomeComponent implements OnInit {
 
   public repository: Repository;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef, private dataStorageService: DataStorageService, private electronService: ElectronService) {
+  constructor(
+    private dataStorageService: DataStorageService,
+    private electronService: ElectronService
+  ) {
 
   }
 
   ngOnInit(): void {
     this.dataStorageService.repository.subscribe(val => {
       this.repository = val;
-      this.changeDetectorRef.detectChanges();
+      console.log(this.repository);
     });
   }
 
