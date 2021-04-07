@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {GitService} from "../../../../shared/git/services/git.service";
 import {Repository} from "../../../../shared/git/models/Repository";
 import {BranchResult, Tree} from "../../../../shared/git/handlers/branch-handler.service";
@@ -8,7 +8,7 @@ import {BranchResult, Tree} from "../../../../shared/git/handlers/branch-handler
   templateUrl: './branche-manager.component.html',
   styleUrls: ['./branche-manager.component.scss']
 })
-export class BrancheManagerComponent implements OnInit {
+export class BrancheManagerComponent implements OnChanges {
 
   @Input()
   public repository: Repository;
@@ -22,12 +22,11 @@ export class BrancheManagerComponent implements OnInit {
     this.remoteBranches = null;
   }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges) {
     this.gitService.getLocalBranches(this.repository)
       .then((branchResult: BranchResult) => this.localBranches = branchResult.tree);
 
     this.gitService.getRemoteBranches(this.repository)
       .then((branchResult: BranchResult) => this.remoteBranches = branchResult.tree);
   }
-
 }

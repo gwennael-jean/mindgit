@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Folder} from "../../../../shared/git/models/Folder";
 
 @Component({
@@ -6,7 +6,7 @@ import {Folder} from "../../../../shared/git/models/Folder";
   templateUrl: './branch-list.component.html',
   styleUrls: ['./branch-list.component.scss']
 })
-export class BranchListComponent implements OnInit {
+export class BranchListComponent {
 
   @Input()
   folder: Folder;
@@ -24,9 +24,6 @@ export class BranchListComponent implements OnInit {
   icon = 'fas fa-folder';
 
   constructor() {
-  }
-
-  ngOnInit(): void {
   }
 
 }

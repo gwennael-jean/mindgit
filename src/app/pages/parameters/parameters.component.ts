@@ -16,7 +16,6 @@ export class ParametersComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private changeDetectorRef: ChangeDetectorRef,
     private dataStorageService: DataStorageService,
     private electronService: ElectronService
   ) {
