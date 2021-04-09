@@ -43,6 +43,7 @@
     "@electron/remote": "1.0.4",
     "cerialize": "2.0.1",
     "jquery": "3.6.0",
+    "lodash": "4.17.21",
     "path": "0.12.7"
   },
   "devDependencies": {
@@ -68,6 +69,7 @@
     "@ngx-translate/http-loader": "6.0.0",
     "@types/jasmine": "3.6.7",
     "@types/jasminewd2": "2.0.8",
+    "@types/lodash": "4.14.168",
     "@types/mocha": "8.2.1",
     "@types/node": "14.14.35",
     "@typescript-eslint/eslint-plugin": "4.16.1",

@@ -7,9 +7,10 @@ import {TopbarComponent} from "../../components/topbar/topbar.component";
 import {BottombarComponent} from "../../components/bottombar/bottombar.component";
 import { BrancheManagerComponent } from './components/branche-manager/branche-manager.component';
 import { BranchListComponent } from './components/branch-list/branch-list.component';
+import { GitGraphComponent } from './components/git-graph/git-graph.component';
 
 @NgModule({
-  declarations: [HomeComponent, TopbarComponent, BottombarComponent, BrancheManagerComponent, BranchListComponent],
+  declarations: [HomeComponent, TopbarComponent, BottombarComponent, BrancheManagerComponent, BranchListComponent, GitGraphComponent],
   imports: [CommonModule, TranslateModule, HomeRoutingModule],
 })
 export class HomeModule {

@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.dataStorageService.repository.subscribe(val => {
       this.repository = val;
-      console.log(this.repository);
     });
   }
 
