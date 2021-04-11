@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@electron/remote": "1.0.4",
+    "@gitgraph/js": "1.4.0",
     "cerialize": "2.0.1",
     "jquery": "3.6.0",
     "lodash": "4.17.21",
