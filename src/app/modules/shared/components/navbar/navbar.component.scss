@@ -1,0 +1,10 @@
+@import "../../../../../assets/scss/config";
+
+@import "../../../../../../node_modules/bootstrap/scss/utilities/background";
+@import "../../../../../../node_modules/bootstrap/scss/utilities/spacing";
+
+:host {
+  @extend .bg-primary;
+  @extend .p-1;
+  border-bottom: 1px solid darken($primary, 5%);
+}

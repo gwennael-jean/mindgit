@@ -5,16 +5,16 @@ import {HttpClientModule, HttpClient} from "@angular/common/http";
 import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
-import {ElectronModule} from "./shared/electron/electron.module";
+import {ElectronModule} from "./modules/shared/modules/electron/electron.module";
 
 import {AppComponent} from "./app.component";
 import {AppRoutingModule} from "./app-routing.module";
 
-import {HomeModule} from "./pages/home/home.module";
-import {ParametersModule} from "./pages/parameters/parameters.module";
-import {ElectronService} from "./shared/electron/services/electron/electron.service";
-import {GitModule} from "./shared/git/git.module";
-import {DataStorageService} from "./shared/electron/services/data-storage/data-storage.service";
+import {HomeModule} from "./modules/pages/home/home.module";
+import {ParametersModule} from "./modules/pages/parameters/parameters.module";
+import {ElectronService} from "./modules/shared/modules/electron/services/electron/electron.service";
+import {GitModule} from "./modules/shared/modules/git/git.module";
+import {DataStorageService} from "./modules/shared/modules/electron/services/data-storage/data-storage.service";
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");

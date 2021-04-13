@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {ElectronService} from "./shared/electron/services/electron/electron.service";
-import {GitService} from "./shared/git/services/git.service";
+import {ElectronService} from "./modules/shared/modules/electron/services/electron/electron.service";
+import {GitService} from "./modules/shared/modules/git/services/git-service/git.service";
 
 @Component({
   selector: 'app-root',
