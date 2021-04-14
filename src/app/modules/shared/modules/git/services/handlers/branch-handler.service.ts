@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {GitModule} from "../../git.module";
 import {HandlerServiceInterface} from "../handler-service.interface";
 import {Folder} from "../../models/folder";
 import {Branch} from "../../models/branch";
@@ -26,7 +25,7 @@ export class BranchHandlerService implements HandlerServiceInterface<BranchResul
         const isCurrent: boolean = null !== this.regexIsCurrent.exec(b);
         const path: string = b.substr(2);
         const pathSplitted: string[] = path.split('/');
-        let currentLevel: Folder = result.tree;
+        let currentLevel: Folder | null = result.tree;
 
         for (let i = 0; i < pathSplitted.length; i++) {
           const part = pathSplitted[i];
@@ -34,18 +33,19 @@ export class BranchHandlerService implements HandlerServiceInterface<BranchResul
           if (i !== pathSplitted.length - 1) {
             let folder = null; // var type ? Node ? Folder? poney?
 
-            if (!currentLevel.has(part)) {
+            if (!currentLevel?.has(part)) {
               folder = i === 0 && isRemote ? new Remote(part) : new Folder(part);
-              currentLevel.add(folder);
+              currentLevel?.add(folder);
             } else {
               folder = currentLevel.get(part);
             }
 
+            // @ts-ignore
             currentLevel = folder;
 
           } else {
             const branch = new Branch(part, isCurrent);
-            currentLevel.add(branch);
+            currentLevel?.add(branch);
           }
         }
       });

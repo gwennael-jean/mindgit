@@ -1,28 +1,32 @@
 {
-  "compileOnSave": false,
+  "compileOnSave": true,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "module": "es2020",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
+    "downlevelIteration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "moduleResolution": "node",
     "allowJs": true,
     "target": "es5",
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
-      "es2016",
-      "es2015",
+      "es2018",
       "dom"
-    ]
+    ],
+    "types": [
+      "node",
+      "jasmine"
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src/**/*.d.ts"
-  ],
   "exclude": [
     "node_modules"
   ]

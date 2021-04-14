@@ -1,8 +1,7 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
-import {ElectronService} from '../../../../shared/modules/electron/services/electron/electron.service';
-import {Repository} from '../../../../shared/modules/git/models/repository';
 import {DataStorageService} from "../../../../shared/modules/electron/services/data-storage/data-storage.service";
 import {Subscription} from 'rxjs';
+import {RepositoryModel} from '../../../../shared/models/repository.model';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +11,10 @@ import {Subscription} from 'rxjs';
 export class HomeComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
-  public repository: Repository;
+  public repository?: RepositoryModel;
 
   constructor(
-    public readonly dataStorageService: DataStorageService,
-    private readonly electronService: ElectronService
+    public readonly dataStorageService: DataStorageService
   ) {
   }
 

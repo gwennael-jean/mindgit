@@ -9,10 +9,10 @@ import {Folder} from "../../../../shared/modules/git/models/folder";
 export class BranchListComponent {
 
   @Input()
-  folder: Folder;
+  folder?: Folder;
 
   @Input()
-  prefix: string;
+  prefix?: string;
 
   @Input()
   open = true;
@@ -22,8 +22,4 @@ export class BranchListComponent {
 
   @Input()
   icon = 'fas fa-folder';
-
-  constructor() {
-  }
-
 }

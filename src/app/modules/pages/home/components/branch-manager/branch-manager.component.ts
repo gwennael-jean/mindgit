@@ -1,8 +1,8 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {GitService} from "../../../../shared/modules/git/services/git-service/git.service";
-import {Repository} from "../../../../shared/modules/git/models/repository";
 import {Tree} from '../../../../shared/modules/git/models/tree';
 import {BranchResult} from '../../../../shared/modules/git/models/branch.result';
+import {RepositoryModel} from '../../../../shared/models/repository.model';
 
 @Component({
   selector: 'app-branch-manager',
@@ -12,7 +12,7 @@ import {BranchResult} from '../../../../shared/modules/git/models/branch.result'
 export class BranchManagerComponent implements OnChanges {
 
   @Input()
-  public repository: Repository;
+  public repository?: RepositoryModel;
 
   public localBranches?: Tree;
   public remoteBranches?: Tree;

@@ -1,6 +1,6 @@
 <ul class="list-unstyled overflow-hidden">
   <li *ngFor="let node of folder?.children;let index = index"
-      [class.active]="node.isCurrent !== undefined && node.isCurrent">
+      [class.active]="node?.isCurrent !== undefined && node?.isCurrent">
     <div class="d-flex flex-row">
       <div>
         <i [ngClass]="node.iconClass"></i>

@@ -1,7 +1,7 @@
 import {Folder} from "./folder";
 
 export class Remote extends Folder {
-  private static readonly DEFAULT_CSS_CLASS = 'fa fa-crosshairs';
+  protected static readonly DEFAULT_CSS_CLASS: string = 'fa fa-crosshairs';
 
   constructor(name: string) {
     super(name);

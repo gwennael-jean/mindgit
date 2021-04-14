@@ -25,7 +25,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 export function loadingProvide(electronService: ElectronService, dataStorageService: DataStorageService) {
   return (): Promise<boolean> => new Promise<boolean>((resolve, reject) => {
-    electronService.ipcRenderer.invoke(LOAD_DATA_ELECTRON_IPC_RENDERER)
+    electronService.ipcRenderer?.invoke(LOAD_DATA_ELECTRON_IPC_RENDERER)
       .then((data: ElectronDataModel) => {
         if (!data) {
           reject('Configuration error with electron');

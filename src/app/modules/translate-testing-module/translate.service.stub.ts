@@ -7,9 +7,9 @@ export class TranslateServiceStub {
   public onTranslationChange: EventEmitter<any> = new EventEmitter();
   public onDefaultLangChange: EventEmitter<any> = new EventEmitter();
   // tslint:disable-next-line
-  private _defaultLang: string;
+  private _defaultLang?: string;
   // tslint:disable-next-line
-  private _currentLang: string;
+  private _currentLang?: string;
 
   public get<T>(key: T, params: any): Observable<T> {
     return new Subject<T>().asObservable();

@@ -9,7 +9,7 @@ import {UserPreferencesService} from '../../services/user-preferences.service';
 })
 export class HeaderButtonComponent implements OnInit {
 
-  public user: UserModel;
+  public user?: UserModel;
 
   constructor(private readonly userPreferencesService: UserPreferencesService) {
   }
