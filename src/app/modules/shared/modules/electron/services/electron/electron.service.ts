@@ -26,8 +26,7 @@ export class ElectronService {
       this.remote = window.require("@electron/remote");
       this.childProcess = window.require("child_process");
       this.fs = window.require("fs");
-
-      console.log("remote - globalShortcut", this.remote.globalShortcut);
+      // console.log("remote - globalShortcut", this.remote.globalShortcut);
     }
   }
 }

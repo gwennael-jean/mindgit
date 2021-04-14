@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BrancheManagerComponent } from './branche-manager.component';
+import { BranchManagerComponent } from './branch-manager.component';
 
-describe('BrancheManagerComponent', () => {
-  let component: BrancheManagerComponent;
-  let fixture: ComponentFixture<BrancheManagerComponent>;
+describe('BranchManagerComponent', () => {
+  let component: BranchManagerComponent;
+  let fixture: ComponentFixture<BranchManagerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BrancheManagerComponent ]
+      declarations: [ BranchManagerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BrancheManagerComponent);
+    fixture = TestBed.createComponent(BranchManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

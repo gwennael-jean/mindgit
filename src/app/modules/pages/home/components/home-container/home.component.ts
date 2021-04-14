@@ -15,10 +15,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   public repository: Repository;
 
   constructor(
-    private readonly dataStorageService: DataStorageService,
+    public readonly dataStorageService: DataStorageService,
     private readonly electronService: ElectronService
   ) {
-
   }
 
   public ngOnInit(): void {

@@ -1,21 +1,30 @@
 <div class="full-page d-flex flex-column">
   <app-topbar></app-topbar>
+
   <div class="d-flex flex-row flex-fill">
     <div class="area area-left">
       <div class="scrollable">
-        <app-branche-manager [repository]="repository"></app-branche-manager>
+        <app-branch-manager [repository]="repository"></app-branch-manager>
       </div>
     </div>
+
     <div class="area area-center flex-fill flex-grow-1">
       <div class="scrollable">
-        {{repository.name}}
+        <ng-container *ngIf="repository">
+          {{repository?.name}}
+        </ng-container>
+        <ng-container *ngIf="!repository">
+          {{ 'PAGES.HOME.NO_REPOSITORY' | translate }}
+        </ng-container>
+
       </div>
     </div>
     <div class="area area-right">
       <div class="scrollable">
-        RIGHT
+        RIGHT PANEL
       </div>
     </div>
   </div>
+
   <app-bottombar></app-bottombar>
 </div>
