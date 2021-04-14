@@ -16,18 +16,15 @@
     <div>
       <h1>{{ 'PAGES.REPOSITORIES.MENU.ITEMS.REPOSITORY_LIST' | translate }}</h1>
       <ul class="list-unstyled">
-        <li class="mb-1"
-            *ngFor="dataStorageService.repositorie$ | async as repository">
+        <li class="mb-1" *ngFor="let repository of repositories">
           <div class="d-flex flex-row align-items-center">
             <div class="flex-fill">
               {{repository.name}}
             </div>
-            <button class="btn btn-sm btn-success ml-1"
-                    (click)="saveMainRepository(repository)">
+            <button class="btn btn-sm btn-success ml-1" (click)="saveMainRepository(repository)">
               <i class="fas fa-play"></i>
             </button>
-            <button class="btn btn-sm btn-danger ml-1"
-                    (click)="deleteRepository(repository)">
+            <button class="btn btn-sm btn-danger ml-1" (click)="deleteRepository(repository)">
               <i class="fas fa-trash"></i>
             </button>
           </div>

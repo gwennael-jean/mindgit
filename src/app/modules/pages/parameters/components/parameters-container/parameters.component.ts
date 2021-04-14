@@ -1,10 +1,13 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import * as path from "path";
 import {ElectronService} from '../../../../shared/modules/electron/services/electron/electron.service';
 import {Router} from "@angular/router";
 import {Repository} from '../../../../shared/modules/git/models/repository';
 import {DataStorageService} from "../../../../shared/modules/electron/services/data-storage/data-storage.service";
-import {DELETE_REPOSITORY_EVENT_EMIT, SAVE_REPOSITORY_EVENT_EMIT} from '../../../../shared/modules/electron/constants/constants';
+import {
+  DELETE_REPOSITORY_EVENT_EMIT,
+  SAVE_REPOSITORY_EVENT_EMIT
+} from '../../../../shared/modules/electron/constants/constants';
 import {HOME_ROUTE} from '../../../../shared/configurations/routes.constants';
 
 @Component({
@@ -12,7 +15,9 @@ import {HOME_ROUTE} from '../../../../shared/configurations/routes.constants';
   templateUrl: './parameters.component.html',
   styleUrls: ['./parameters.component.scss']
 })
-export class ParametersComponent {
+export class ParametersComponent implements OnInit {
+
+  public repositories: Repository[];
 
   public routes: { home: string } = {home: `/${HOME_ROUTE}`};
 
@@ -21,6 +26,10 @@ export class ParametersComponent {
     public readonly  dataStorageService: DataStorageService,
     private readonly  electronService: ElectronService
   ) {
+  }
+
+  ngOnInit(): void {
+    this.dataStorageService.repositorie$.subscribe(repositories => this.repositories = repositories)
   }
 
   public openNewProject(): void {
