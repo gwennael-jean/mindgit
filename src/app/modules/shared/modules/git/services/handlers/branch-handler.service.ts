@@ -7,7 +7,7 @@ import {Remote} from "../../models/remote";
 import {BranchResult} from '../../models/branch.result';
 
 @Injectable({
-  providedIn: GitModule
+  providedIn: 'root'
 })
 export class BranchHandlerService implements HandlerServiceInterface<BranchResult> {
 

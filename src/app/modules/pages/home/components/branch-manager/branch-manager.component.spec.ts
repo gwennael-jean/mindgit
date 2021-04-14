@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BranchManagerComponent } from './branch-manager.component';
+import {TranslateTestingModule} from '../../../../translate-testing-module/translate.testing.module';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 describe('BranchManagerComponent', () => {
   let component: BranchManagerComponent;
@@ -8,7 +10,13 @@ describe('BranchManagerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BranchManagerComponent ]
+      declarations: [ BranchManagerComponent ],
+      imports:[
+        TranslateTestingModule
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ]
     })
     .compileComponents();
   });
