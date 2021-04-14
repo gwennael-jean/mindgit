@@ -17,6 +17,7 @@ import {GitModule} from "./modules/shared/modules/git/git.module";
 import {DataStorageService} from "./modules/shared/modules/electron/services/data-storage/data-storage.service";
 import {ElectronDataModel} from './modules/shared/modules/electron/models/electron.data.model';
 import {LOAD_DATA_ELECTRON_IPC_RENDERER} from './modules/shared/modules/electron/constants/constants';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -44,10 +45,10 @@ export function loadingProvide(electronService: ElectronService, dataStorageServ
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
     AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

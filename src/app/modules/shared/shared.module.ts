@@ -6,6 +6,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {ElectronModule} from './modules/electron/electron.module';
 import {GitModule} from './modules/git/git.module';
+import {UserPreferencesModule} from '../user-preferences/user-preferences.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {GitModule} from './modules/git/git.module';
     TranslateModule,
     ElectronModule,
     GitModule,
+    UserPreferencesModule
   ],
   exports: [
     FooterComponent,
