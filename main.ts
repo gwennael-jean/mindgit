@@ -59,7 +59,7 @@ function createWindow(): BrowserWindow {
     }));
   }
 
-  win.on('resize', (event) => {
+  win.on('resize', () => {
     store.set('windowBounds', {
       width: win.getSize()[0],
       height: win.getSize()[1],
@@ -102,7 +102,7 @@ try {
   // throw e;
 }
 
-ipcMain.handle('load:data', (event) => {
+ipcMain.handle('load:data', () => {
   return store.get('app');
 });
 
