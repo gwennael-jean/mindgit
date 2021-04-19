@@ -32,7 +32,9 @@
             ],
             "customWebpackConfig": {
               "path": "./angular.webpack.js"
-            }
+            },
+            "allowedCommonJsDependencies": [
+            ]
           },
           "configurations": {
             "dev": {

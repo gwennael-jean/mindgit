@@ -13,7 +13,8 @@
     "environments/**/*.ts"
   ],
   "exclude": [
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "app/modules/translate-testing-module/*.ts"
   ],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
