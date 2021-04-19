@@ -53,22 +53,6 @@
                 }
               ]
             },
-            "web": {
-              "optimization": false,
-              "outputHashing": "all",
-              "sourceMap": true,
-              "namedChunks": false,
-              "aot": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.web.ts"
-                }
-              ]
-            },
             "production": {
               "optimization": true,
               "outputHashing": "all",
@@ -95,9 +79,6 @@
           "configurations": {
             "dev": {
               "browserTarget": "mindgit:build:dev"
-            },
-            "web": {
-              "browserTarget": "mindgit:build:web"
             },
             "production": {
               "browserTarget": "mindgit:build:production"
