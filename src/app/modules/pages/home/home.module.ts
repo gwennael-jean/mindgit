@@ -6,6 +6,7 @@ import {HomeComponent} from "./components/home-container/home.component";
 import {BranchManagerComponent} from './components/branch-manager/branch-manager.component';
 import {BranchListComponent} from './components/branch-list/branch-list.component';
 import {SharedModule} from '../../shared/shared.module';
+import {GitGraphModule} from '../../git-graph/git-graph.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {SharedModule} from '../../shared/shared.module';
     CommonModule,
     TranslateModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    GitGraphModule
   ],
 })
 export class HomeModule {
