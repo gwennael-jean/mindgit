@@ -49,7 +49,7 @@ export class GitService {
 
   public checkoutBranch(repository: RepositoryModel, branchName: string, create: boolean = false): Promise<BranchResult> {
     const attributes: (GitCommandsAttributesEnum | string)[] = create ? [GitCommandsAttributesEnum.NEW_BRANCH, branchName] : [branchName];
-    const command: GitCommand = {command: GitCommandsEnum.CHECKOUT, attributes: [branchName]};
+    const command: GitCommand = {command: GitCommandsEnum.CHECKOUT, attributes: attributes};
     return this.execGitCommand(repository, [command]);
   }
 
