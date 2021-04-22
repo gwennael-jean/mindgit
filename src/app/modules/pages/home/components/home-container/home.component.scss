@@ -1,4 +1,4 @@
-@import "../../../../../../assets/scss/config";
+@import "~assets/scss/config";
 
 @import "~bootstrap/scss/utilities/background";
 @import "~bootstrap/scss/utilities/spacing";
@@ -11,7 +11,7 @@
     height: auto;
     background-color: $dashboard-bg-color;
     padding: 0.5rem;
-    background-image: url('../../../../../../assets/img/mindgit.png');
+    background-image: url('~assets/img/mindgit.png');
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
