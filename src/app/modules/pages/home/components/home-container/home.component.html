@@ -20,8 +20,19 @@
       </div>
     </div>
     <div class="area area-right">
-      <div class="scrollable">
-        RIGHT PANEL
+      <div class="scrollable d-flex flex-column">
+        <div class="staging-sidebar">
+          <app-staging-block class="d-flex flex-fill">
+            <button class="btn btn-success">
+              Stage all changes
+            </button>
+          </app-staging-block>
+          <app-staging-block class="d-flex flex-fill">
+            <button class="btn btn-danger">
+              Unstage all changes
+            </button>
+          </app-staging-block>
+        </div>
       </div>
     </div>
   </div>

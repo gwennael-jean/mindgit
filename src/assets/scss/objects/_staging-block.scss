@@ -1,0 +1,42 @@
+.staging-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .staging-block {
+    display: flex;
+    flex-direction: column;
+
+    .staging-block-header {
+      text-align: right;
+    }
+
+    .staging-block-body {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      background-color: $staging-block-body-bg-color;
+      border: 1px solid $staging-block-body-border-color;
+      flex: 1;
+      overflow-x: auto;
+
+      .staging-block-file {
+        cursor: pointer;
+        padding: 0.3rem;
+
+        .media-body {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        &:hover {
+          background-color: $staging-block-file-bg-color-hover;
+        }
+      }
+
+      li .list-unstyled {
+        margin-left: 20px;
+      }
+    }
+  }
+}
