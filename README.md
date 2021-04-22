@@ -31,6 +31,8 @@ npm install
 
 Vous pouvez lancer le projet en exécutant la commande `npm run start`.
 
+Exécuter un seul test:
+npm run test -- --include src/app/modules/shared/modules/git/services/git-service/git.command.helper.spec.ts
 
 ### App packaging 
 https://blog.usejournal.com/how-to-build-native-cross-platform-desktop-apps-with-angular-electron-bd1d6e3919b2
