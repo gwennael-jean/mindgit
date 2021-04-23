@@ -6,5 +6,6 @@ export enum GitCommandsAttributesEnum {
   FORCE = '-f',
   FROM_WORKING_INDEX = '--cache',
   NEW_BRANCH = '-b',
+  PORCELAIN= '--porcelain',
   ALL= '-all'
 }

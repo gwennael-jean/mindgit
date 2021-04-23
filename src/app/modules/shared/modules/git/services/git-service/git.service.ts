@@ -10,6 +10,7 @@ import {GitCommandsAttributesEnum} from '../../models/git.commands.attributes.en
 import {HandlerServiceInterface} from '../handler-service.interface';
 import {LocalBranchHandlerService} from '../handlers/local-branch-handler.service';
 import {RemoteBranchHandlerService} from '../handlers/remote-branch-handler.service';
+import {StatusHandlerService} from '../handlers/status-handler.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class GitService {
     private readonly electronService: ElectronService,
     private readonly localBranchHandlerService: LocalBranchHandlerService,
     private readonly remoteBranchHandlerService: RemoteBranchHandlerService,
+    private readonly statusHandlerService: StatusHandlerService,
   ) {
   }
 
@@ -41,6 +43,11 @@ export class GitService {
   public checkout(repository: RepositoryModel, branch: string): Promise<BranchResult> {
     const command: GitCommand = {command: GitCommandsEnum.CHECKOUT, attributes: [branch]};
     return this.execGitCommand(repository, this.localBranchHandlerService, [command]);
+  }
+
+  public status(repository: RepositoryModel): Promise<BranchResult> {
+    const command: GitCommand = {command: GitCommandsEnum.STATUS, attributes: [GitCommandsAttributesEnum.PORCELAIN]};
+    return this.execGitCommand(repository, this.statusHandlerService, [command]);
   }
 
   public getLocalBranches(repository: RepositoryModel): Promise<BranchResult> {
