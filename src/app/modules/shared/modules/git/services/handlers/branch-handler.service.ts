@@ -10,17 +10,21 @@ import {BranchResult} from '../../models/branch.result';
 })
 export class BranchHandlerService implements HandlerServiceInterface<BranchResult> {
 
-  private regexIsCurrent = /^\* /;
-  private regexBranchInFolder = /\//;
-  private regexBranchHead = /HEAD \-\>/;
+  protected regexIsCurrent = /^\* /;
 
-  public handle(stdout: string, isRemote = false): BranchResult {
+  protected regexBranchInFolder = /\//;
+
+  protected regexBranchHead = /HEAD \-\>/;
+
+  protected isRemote: boolean = false;
+
+  public handle(stdout: string): BranchResult {
     const result = new BranchResult();
 
     stdout.split('\n')
       .filter(b => b.length > 0)
       .filter(b => this.removeHeadLine(b))
-      .sort((a: string, b: string) => this.sortBranch(a, b, isRemote))
+      .sort((a: string, b: string) => this.sortBranch(a, b))
       .forEach(b => {
         const isCurrent: boolean = null !== this.regexIsCurrent.exec(b);
         const path: string = b.substr(2);
@@ -34,7 +38,7 @@ export class BranchHandlerService implements HandlerServiceInterface<BranchResul
             let folder = null; // var type ? Node ? Folder? poney?
 
             if (!currentLevel?.has(part)) {
-              folder = i === 0 && isRemote ? new Remote(part) : new Folder(part);
+              folder = i === 0 && this.isRemote ? new Remote(part) : new Folder(part);
               currentLevel?.add(folder);
             } else {
               folder = currentLevel.get(part);
@@ -53,15 +57,15 @@ export class BranchHandlerService implements HandlerServiceInterface<BranchResul
     return result;
   }
 
-  private removeHeadLine(b: string) {
+  protected removeHeadLine(b: string) {
     return null === this.regexBranchHead.exec(b);
   }
 
-  private sortBranch(a: string, b: string, isRemote: boolean) {
+  protected sortBranch(a: string, b: string) {
     let branchA = a;
     let branchB = b;
 
-    if (isRemote) {
+    if (this.isRemote) {
       branchA = branchA.substr(branchA.indexOf("/") + 1);
       branchB = branchB.substr(branchB.indexOf("/") + 1);
     }
