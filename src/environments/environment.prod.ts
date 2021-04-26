@@ -1,5 +1,9 @@
+const config = require('../../package.json');
+
 export const AppConfig = {
   production: true,
   environment: 'PROD',
-  version: '0.0.1'
+  version: config.version,
+  author: config.author.name,
+  appName: config.name
 };

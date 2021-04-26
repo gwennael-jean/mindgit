@@ -1,0 +1,25 @@
+<ul class="list-unstyled overflow-hidden">
+  <li *ngFor="let node of folder?.children;let index = index"
+      [class.active]="node?.isCurrent !== undefined && node?.isCurrent">
+    <div class="d-flex flex-row">
+      <div>
+        <i [ngClass]="node.iconClass"></i>
+      </div>
+      <div class="flex-fill ml-1 overflow-hidden">
+        <div data-toggle="collapse"
+             class="text-nowrap text-truncate"
+             [attr.data-target]="'#' + prefix + '-' + node.name + '-' + index"
+             role="button">
+          {{node.name}}
+        </div>
+        <div id="{{prefix}}-{{node.name}}-{{index}}" class="collapse" [class.show]="open">
+          <app-branch-list *ngIf="node?.children !== undefined"
+                           [folder]="node"
+                           prefix="{{prefix}}"
+                           [open]="openSubFolder">
+          </app-branch-list>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

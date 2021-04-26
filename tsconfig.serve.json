@@ -17,7 +17,8 @@
     ]
   },
   "files": [
-    "main.ts"
+    "main.ts",
+    "src/typings.d.ts"
   ],
   "exclude": [
     "node_modules",

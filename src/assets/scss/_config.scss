@@ -10,6 +10,8 @@ $body-color: #FFFFFF;
 $theme-colors: (
 );
 
+$loader-color: lighten($primary, 5%);
+
 $topbar-border-color: darken($primary, 5%);
 
 // Dashboard

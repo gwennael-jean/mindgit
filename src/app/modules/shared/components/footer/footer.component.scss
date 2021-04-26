@@ -1,0 +1,13 @@
+
+@import "~assets/scss/config";
+
+@import "~bootstrap/scss/utilities/background";
+@import "~bootstrap/scss/utilities/spacing";
+
+:host {
+  @extend .bg-primary;
+  @extend .p-1;
+  text-align: right;
+  font-size: 0.75rem;
+  border-top: 1px solid darken($primary, 5%);
+}

@@ -6,9 +6,14 @@
       "GIT": {
         "BRANCH": {
           "LOCAL": "Local",
-          "REMOTE": "Remote"
+          "REMOTE": "Remote",
+          "NO":{
+            "LOCAL": "No local branch found",
+            "REMOTE": "No remote branch found"
+          }
         }
-      }
+      },
+      "NO_REPOSITORY": "No repository configured"
     },
     "REPOSITORIES": {
       "MENU": {

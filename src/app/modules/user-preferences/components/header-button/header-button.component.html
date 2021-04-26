@@ -1,0 +1,13 @@
+<ng-container *ngIf="user">
+  <button mat-icon-button
+          [matMenuTriggerFor]="menu"
+          [title]="user?.name">
+    <mat-icon>account_box</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>Preferences</span>
+    </button>
+  </mat-menu>
+</ng-container>

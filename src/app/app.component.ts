@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {ElectronService} from "./shared/electron/services/electron/electron.service";
-import {GitService} from "./shared/git/services/git.service";
+import {ElectronService} from "./modules/shared/modules/electron/services/electron/electron.service";
+import {GitService} from "./modules/shared/modules/git/services/git-service/git.service";
+import {AppConfig} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -14,15 +15,8 @@ export class AppComponent {
     private gitService: GitService,
     private translate: TranslateService
   ) {
-    this.translate.setDefaultLang('fr');
+    this.translate.setDefaultLang('fr'); // TODO create a component to change language
 
-    if (electronService.isElectron) {
-      console.log(process.env);
-      console.log('Run in electron');
-      console.log('Electron ipcRenderer', this.electronService.ipcRenderer);
-      console.log('NodeJS childProcess', this.electronService.childProcess);
-    } else {
-      console.log('Run in browser');
-    }
+    console.log(`${AppConfig.appName} is running in ${electronService.isElectron ? 'electron' : 'browser' } v${AppConfig.version}`);
   }
 }

@@ -23,12 +23,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js"
+            ],
             "customWebpackConfig": {
               "path": "./angular.webpack.js"
-            }
+            },
+            "allowedCommonJsDependencies": [
+            ]
           },
           "configurations": {
             "dev": {
@@ -44,22 +49,6 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.dev.ts"
-                }
-              ]
-            },
-            "web": {
-              "optimization": false,
-              "outputHashing": "all",
-              "sourceMap": true,
-              "namedChunks": false,
-              "aot": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.web.ts"
                 }
               ]
             },
@@ -89,9 +78,6 @@
           "configurations": {
             "dev": {
               "browserTarget": "mindgit:build:dev"
-            },
-            "web": {
-              "browserTarget": "mindgit:build:web"
             },
             "production": {
               "browserTarget": "mindgit:build:production"

@@ -1,0 +1,38 @@
+<div class="full-page d-flex flex-column">
+  <a [routerLink]="routes.home"
+     class="btn-fixed-top">
+    <i class="fas fa-times fa-2x"></i>
+  </a>
+  <div class="d-flex justify-content-around align-items-center flex-fill">
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item"
+            (click)="openNewProject()"
+            role="button">
+          {{ 'PAGES.REPOSITORIES.MENU.ITEMS.OPEN_PROJECT' | translate }}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h1>{{ 'PAGES.REPOSITORIES.MENU.ITEMS.REPOSITORY_LIST' | translate }}</h1>
+      <ul class="list-unstyled">
+        <li class="mb-1"
+            *ngFor="let repository of repositories">
+          <div class="d-flex flex-row align-items-center">
+            <div class="flex-fill">
+              {{repository.name}}
+            </div>
+            <button class="btn btn-sm btn-success ml-1"
+                    (click)="saveMainRepository(repository)">
+              <i class="fas fa-play"></i>
+            </button>
+            <button class="btn btn-sm btn-danger ml-1"
+                    (click)="deleteRepository(repository)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="accordion">
+  <div class="card">
+    <div class="card-header"
+         data-toggle="collapse"
+         data-target="#local-branches"
+         aria-controls="branch-local"
+         role="button">
+      <div class="media align-items-center">
+        <i class="fas fa-desktop"></i>
+        <div class="media-body ml-1">
+          {{ 'PAGES.HOME.GIT.BRANCH.LOCAL' | translate | uppercase }}
+        </div>
+      </div>
+    </div>
+
+    <div id="local-branches"
+         class="collapse show">
+      <div class="card-body">
+        <ng-container *ngIf="localBranches">
+          <app-branch-list
+            [folder]="localBranches"
+            prefix="locale">
+          </app-branch-list>
+        </ng-container>
+
+        <ng-container *ngIf="!localBranches">
+          <div class="no-branch">
+            {{ 'PAGES.HOME.GIT.BRANCH.NO.LOCAL' | translate }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"
+         data-toggle="collapse"
+         data-target="#remote-branches"
+         aria-controls="branch-remote"
+         role="button">
+      <div class="media align-items-center">
+        <i class="fas fa-cloud"></i>
+        <div class="media-body ml-1">
+          {{ 'PAGES.HOME.GIT.BRANCH.REMOTE' | translate | uppercase }}
+        </div>
+      </div>
+    </div>
+
+    <div id="remote-branches"
+         class="collapse show">
+      <div class="card-body">
+        <ng-container *ngIf="localBranches">
+          <ul class="list-unstyled">
+            <app-branch-list [folder]="remoteBranches"
+                             prefix="remote"
+                             icon="fas fa-crosshairs"
+                             [openSubFolder]="false">
+            </app-branch-list>
+          </ul>
+        </ng-container>
+
+        <ng-container *ngIf="!localBranches">
+          <div class="no-branch">
+            {{ 'PAGES.HOME.GIT.BRANCH.NO.REMOTE' | translate }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
