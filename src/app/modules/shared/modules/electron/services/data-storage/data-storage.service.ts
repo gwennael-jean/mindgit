@@ -9,20 +9,22 @@ import {RepositoryModel} from '../../../../models/repository.model';
 })
 export class DataStorageService {
 
-  private readonly repository: BehaviorSubject<RepositoryModel | undefined> = new BehaviorSubject<RepositoryModel | undefined>(undefined);
-  public readonly repository$: Observable<RepositoryModel | undefined> = this.repository.asObservable();
+  private readonly repositorySubject: BehaviorSubject<RepositoryModel | undefined> = new BehaviorSubject<RepositoryModel | undefined>(undefined);
+  public readonly repository$: Observable<RepositoryModel | undefined> = this.repositorySubject.asObservable();
 
-  private readonly repositories: BehaviorSubject<RepositoryModel[]> = new BehaviorSubject<RepositoryModel[]>([]);
-  public readonly repositorie$: Observable<RepositoryModel[]> = this.repositories.asObservable();
+  private readonly repositoriesSubject: BehaviorSubject<RepositoryModel[]> = new BehaviorSubject<RepositoryModel[]>([]);
+  public readonly repositorie$: Observable<RepositoryModel[]> = this.repositoriesSubject.asObservable();
 
   constructor(private readonly electronService: ElectronService) {
-    this.electronService.ipcRenderer?.on(SAVE_REPOSITORY_EVENT_RECEIVE, (event: any, repository: RepositoryModel) =>
-        this.repository.next(repository)
-      );
+    this.electronService.ipcRenderer?.on(SAVE_REPOSITORY_EVENT_RECEIVE,
+      (event: any, repository: RepositoryModel) =>
+        this.repositorySubject.next(repository)
+    );
 
-    this.electronService.ipcRenderer?.on(SAVE_REPOSITORIES_EVENT_RECEIVE, (event: any, repositories: RepositoryModel[]) =>
-        this.repositories.next(repositories)
-      );
+    this.electronService.ipcRenderer?.on(SAVE_REPOSITORIES_EVENT_RECEIVE,
+      (event: any, repositories: RepositoryModel[]) =>
+        this.repositoriesSubject.next(repositories)
+    );
   }
 
   /**
@@ -30,7 +32,7 @@ export class DataStorageService {
    * @param repository repository to publish
    */
   public publishRepository(repository: RepositoryModel): void {
-    this.repository.next(repository);
+    this.repositorySubject.next(repository);
   }
 
   /**
@@ -38,6 +40,6 @@ export class DataStorageService {
    * @param repositories array of repository to publish
    */
   public publishRepositories(repositories: RepositoryModel[]): void {
-    this.repositories.next(repositories);
+    this.repositoriesSubject.next(repositories);
   }
 }

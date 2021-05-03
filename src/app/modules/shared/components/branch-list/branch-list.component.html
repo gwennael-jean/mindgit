@@ -1,0 +1,16 @@
+<ul class="list-unstyled overflow-hidden">
+  <li *ngFor="let node of folder?.children;let index = index"
+      [class.active]="node?.isCurrent !== undefined && node?.isCurrent">
+    <div class="d-flex flex-row">
+      <div>
+        <i [ngClass]="node.iconClass"></i>
+      </div>
+
+      <app-branch-list-node [node]="node"
+                            [repository]="repository"
+                            [openSubFolder]="openSubFolder"
+                            [open]="open">
+      </app-branch-list-node>
+    </div>
+  </li>
+</ul>
