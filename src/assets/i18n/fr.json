@@ -2,12 +2,12 @@
   "PAGES": {
     "HOME": {
       "TITLE": "Accueil",
-      "GO_TO_DETAIL": "Redirection vers Detail",
+      "GO_TO_DETAIL": "Redirection vers Détail",
       "GIT": {
         "BRANCH": {
           "LOCAL": "Local",
           "REMOTE": "Remote",
-          "NO":{
+          "NO": {
             "LOCAL": "No local branch found",
             "REMOTE": "No remote branch found"
           }
@@ -20,6 +20,35 @@
         "ITEMS": {
           "OPEN_PROJECT": "Ouvrir un projet",
           "REPOSITORY_LIST": "Liste des dépôts"
+        }
+      }
+    }
+  },
+  "SHARED": {
+    "MODULES": {
+      "GIT": {
+        "SERVICES": {
+          "NODE-ACTIONS": {
+            "PULL": "Pull {{branch}}",
+            "PUSH": "Push {{branch}}",
+            "CHECKOUT": "Checkout {{branch}}",
+            "SET-UPSTREAM": "Set Upstream",
+            "REBASE": "Rebase {{branch}} onto {{target}}",
+            "FATS-FORWARD": "Fast-forward {{target}} to {{branch}}",
+            "MERGE": "Merge {{branch}} into {{target}}",
+            "CREATE-BRANCH": "Create branch here",
+            "CHERRY-PICK": "Cherry pick commit",
+            "RESET": "Reset {{branch}} to this commit",
+            "REVERT": "Revert commit",
+            "RENAME": "Rename {{branch}}",
+            "DELETE": "Delete {{branch}}",
+            "COPY-BRANCH-NAME": "Copy branch name",
+            "COPY-COMMIT-SHA": "Copy commit sha",
+            "HIDE": "Hide",
+            "SOLO": "Solo",
+            "CREATE-TAG": "Create tag here",
+            "CREATE-ANNOTATED-TAG": "Create annotated tag here"
+          }
         }
       }
     }

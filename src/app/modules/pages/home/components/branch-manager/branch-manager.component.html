@@ -19,6 +19,7 @@
         <ng-container *ngIf="localBranches">
           <app-branch-list
             [folder]="localBranches"
+            [repository]="repository"
             prefix="locale">
           </app-branch-list>
         </ng-container>
@@ -52,9 +53,10 @@
         <ng-container *ngIf="localBranches">
           <ul class="list-unstyled">
             <app-branch-list [folder]="remoteBranches"
+                             [repository]="repository"
+                             [openSubFolder]="false"
                              prefix="remote"
-                             icon="fas fa-crosshairs"
-                             [openSubFolder]="false">
+                             icon="fas fa-crosshairs">
             </app-branch-list>
           </ul>
         </ng-container>

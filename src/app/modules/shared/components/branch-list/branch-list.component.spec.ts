@@ -2,6 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {BranchListComponent} from './branch-list.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {BranchListNodeComponent} from '../branch-list-node/branch-list-node.component';
 
 describe('BranchListComponent', () => {
   let component: BranchListComponent;
@@ -10,7 +11,8 @@ describe('BranchListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        BranchListComponent
+        BranchListComponent,
+        BranchListNodeComponent
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA

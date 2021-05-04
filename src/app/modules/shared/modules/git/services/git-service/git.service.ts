@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {ElectronService} from "../../../electron/services/electron/electron.service";
-import {BranchHandlerService} from '../handlers/branch-handler.service';
 import {BranchResult} from '../../models/branch.result';
 import {RepositoryModel} from '../../../../models/repository.model';
 import {GitCommand} from '../../models/git.command';
@@ -11,6 +10,7 @@ import {HandlerServiceInterface} from '../handler-service.interface';
 import {LocalBranchHandlerService} from '../handlers/local-branch-handler.service';
 import {RemoteBranchHandlerService} from '../handlers/remote-branch-handler.service';
 
+// TODO MANAGE ERRORS
 @Injectable({
   providedIn: 'root'
 })

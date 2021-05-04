@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {Folder} from "../../../../shared/modules/git/models/folder";
+import {Folder} from "../../modules/git/models/folder";
+import {RepositoryModel} from '../../models/repository.model';
 
 @Component({
   selector: 'app-branch-list',
@@ -22,4 +23,7 @@ export class BranchListComponent {
 
   @Input()
   icon = 'fas fa-folder';
+
+  @Input()
+  public repository?: RepositoryModel;
 }

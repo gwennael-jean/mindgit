@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {AppConfig} from '../../../../../environments/environment';
 
 @Component({
-  selector: "app-topbar",
+  selector: "app-navbar",
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.scss"]
 })
