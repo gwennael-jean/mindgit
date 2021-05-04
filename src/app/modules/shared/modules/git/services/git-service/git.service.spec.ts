@@ -10,7 +10,7 @@ describe('GitService', () => {
     TestBed.configureTestingModule({
       imports: [],
       providers: [
-        {provivide: BranchHandlerService, useValue: new BranchHandlerService()}
+        {provide: BranchHandlerService, useValue: new BranchHandlerService()}
       ]
 
     });

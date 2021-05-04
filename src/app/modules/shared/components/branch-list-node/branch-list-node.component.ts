@@ -43,9 +43,9 @@ export class BranchListNodeComponent {
     // TODO open modal or workflow (cherry pick/rebase), conflicts...
     if (this.repository && this.node) {
       let result: Promise<BranchResult> | undefined;
+
       switch (gitNodeAction.action.gitCommand) {
         case GitCommandsEnum.PULL:
-          console.log('pulling');
           result = this.gitService.pull(this.repository, this.node.name);
           break;
         default:
